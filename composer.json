@@ -1,0 +1,33 @@
+{
+    "name": "pcabreus-utils/localized-date",
+    "type": "library",
+    "description": "Convert a date into proper format string according with the locale",
+    "keywords": [
+        "locale",
+        "localized date",
+        "positibe",
+        "positibelabs"
+    ],
+    "homepage": "https://github.com/pcabreus/LocalizedDate",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Pedro Carlos Abreu Jiménez",
+            "email": "pcabreus@gmail.com",
+            "homepage": "https://github.com/pcabreus"
+        },
+        {
+            "name": "PositibeLabs",
+            "homepage": "http://www.positibelabs.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Pcabreus\\Utils\\DateTime\\": ""}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
