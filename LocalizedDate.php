@@ -71,19 +71,20 @@ class LocalizedDate
         return $date->format($format);
     }
 
-    public function getMonthsLocalized($locale)
+    public static function getMonthsLocalized($locale)
     {
         $formatter = \IntlDateFormatter::create(
             $locale,
             $datetype = \IntlDateFormatter::LONG,
             $timetype = \IntlDateFormatter::NONE,
             null,
-            \IntlDateFormatter::GREGORIAN
+            \IntlDateFormatter::GREGORIAN,
+            'MMMM'
         );
 
         $months = [];
-        foreach (range(0, 11) as $number) {
-            $months[] = $formatter->format('m');
+        foreach (range(1, 12) as $number) {
+            $months[] = ucwords($formatter->format(new\DateTime(sprintf('0000-%s-01', $number))));
         }
 
         return $months;
