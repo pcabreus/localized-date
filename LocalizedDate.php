@@ -10,7 +10,6 @@
 
 namespace Pcabreus\Utils\DateTime;
 
-
 /**
  * Class LocalizedDate
  * @package Pcabreus\Utils\DateTime
@@ -26,41 +25,42 @@ class LocalizedDate
      * @param null $locale
      * @param int $datetype
      * @param int $timetype
+     * @param null $pattern
      * @return bool|string
      */
     public static function getLocaleFormatDate(
         \DateTime $date,
         $locale = null,
         $datetype = \IntlDateFormatter::LONG,
-        $timetype = \IntlDateFormatter::NONE
+        $timetype = \IntlDateFormatter::NONE,
+        $pattern = null
     ) {
         $formatter = \IntlDateFormatter::create(
             $locale,
             $datetype,
             $timetype,
             $date->getTimezone()->getName(),
-            \IntlDateFormatter::GREGORIAN
+            \IntlDateFormatter::GREGORIAN,
+            $pattern
         );
 
         return $formatter->format($date->getTimestamp());
     }
 
     /**
-     * Caution: This only works to english
+     * Get the month and year, it works for es and en locale it's not proved on others locales
      *
      * @param \DateTime $date
      * @param null $locale
      * @param int $datetype
      * @param int $timetype
-     * @param $format
      * @return string
      */
     public static function getLocaleFormatMountAndYear(
         \DateTime $date,
         $locale = null,
         $datetype = \IntlDateFormatter::LONG,
-        $timetype = \IntlDateFormatter::NONE,
-        $format
+        $timetype = \IntlDateFormatter::NONE
     ) {
         if ($locale === 'es') {
             return ucfirst(
@@ -68,9 +68,15 @@ class LocalizedDate
             );
         }
 
-        return $date->format($format);
+        return LocalizedDate::getLocaleFormatDate($date, $locale, $datetype, $timetype, 'MMMM Y');
     }
 
+    /**
+     * Get a list of all months according with the locale e.g. January, February
+     *
+     * @param $locale
+     * @return array
+     */
     public static function getMonthsLocalized($locale)
     {
         $formatter = \IntlDateFormatter::create(

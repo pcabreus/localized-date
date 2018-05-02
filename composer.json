@@ -1,7 +1,7 @@
 {
     "name": "pcabreus-utils/localized-date",
     "type": "library",
-    "description": "Convert a date into proper format string according with the locale",
+    "description": "Convert a date into its proper format string according with the locale",
     "keywords": [
         "locale",
         "localized date",
@@ -10,7 +10,7 @@
     ],
     "homepage": "https://github.com/pcabreus/LocalizedDate",
     "license": "MIT",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "authors": [
         {
             "name": "Pedro Carlos Abreu Jiménez",
@@ -27,7 +27,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.1.x-dev"
         }
     }
 }
